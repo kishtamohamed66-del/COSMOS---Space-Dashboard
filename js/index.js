@@ -1,286 +1,310 @@
-let currentIndex = 0;
-var headerData= document.getElementById("headerData")
-var products=[
-  {
-    id:1,
-    imgUrl:"https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?q=80&w=800&auto=format&fit=crop",
-    span1:"(356 reviews)",
-    span2:"10 min",
-    span3:"15 min",
-    span4:"2 people",
-    span5:"Easy",
-    span6:"Seafood",
-    h1:"Shrimp Scampi",
-    p1:"Garlicky shrimp in white wine butter sauce",
-    p2:"400g large shrimp, peeled",
-    p3:"300g linguine pasta",
-    p4:" 6 cloves garlic, minced",
-    p5:" 1/2 cup white wine",
-    p6:" 4 tablespoons butter",
-    p7:" tablespoons olive oil",
-    p8:" Fresh parsley, chopped",
-    p9:" Red pepper flakes",
-  },
-  {
-    id:2,
-    imgUrl:"https://images.unsplash.com/photo-1565299585323-38d6b0865b47?q=80&w=800&auto=format&fit=crop",
-    span1:"(412 reviews)",
-    span2:"15 min",
-    span3:"240 min",
-    span4:"4 people",
-    span5:"ُEsay",
-    span6:"American",
-    h1:"BBQ Pulled Pork",
-    p1:"Slow-cooked tender pork in smoky barbecue sauce",
-    p2:"1kg pork shoulder",
-    p3:"1 cup BBQ sauce",
-    p4:"1/2 cup apple cider vinegar",
-    p5:"2 tablespoons brown sugar",
-    p6:"1 tablespoon paprika",
-    p7:"Burger buns",
-    p8:"Coleslaw for serving",
-    p9:"500g ground beef (80/20)",
-  },
-  {
-    id:3,
-    imgUrl:"https://images.unsplash.com/photo-1509722747041-616f39b57569?q=80&w=800&auto=format&fit=crop",
-    span1:"(267 reviews)",
-    span2:"15 min",
-    span3:"60 min",
-    span4:"4 people",
-    span5:"Intermediate",
-    span6:"Mediterranean",
-    h1:"French Onion Soup",
-    p1:"Rich beef broth with caramelized onions and melted cheese",
-    p2:"4 large onions, thinly sliced",
-    p3:"4 tablespoons butter",
-    p4:"1 liter beef broth",
-    p5:"1/2 cup white wine",
-    p6:"2 bay leaves",
-    p7:"Baguette slices",
-    p8:"200g Gruyère cheese, grated",
-    p9:"500g ground beef (80/20)",
-  },
-  {
-    id:4,
-    imgUrl:"https://images.unsplash.com/photo-1546793665-c74683f339c1?q=80&w=800&auto=format&fit=crop",
-    span1:"(445 reviews)",
-    span2:"20 min",
-    span3:"15 min",
-    span4:"2 people",
-    span5:"Intermediate",
-    span6:"Asian",
-    h1:"Chicken Tikka Masala",
-    p1:"Vibrant and aromatic curry with vegetables and coconut milk",
-    p2:"4 burger buns",
-    p3:"4 slices cheddar cheese",
-    p4:" Lettuce leave",
-    p5:"Tomato slicesk",
-    p6:"Red onion, sliced",
-    p7:"Pickles",
-    p8:"Burger sauce or condiments",
-    p9:"500g ground beef (80/20)",
-  },
-];
-function tryAgain(){
-    var product= products[currentIndex];
-headerData.innerHTML=` <div class="container shadow-lg rounded-4 recipe">
-        <div class="row">
-              <div class="col-lg-5 ">
-                <div class=" position-relative w-100 h-100" style="height:700px ;">
-                    <img src="${product.imgUrl}" class="w-100 object-fit-cover" height="100%" width="100%"  alt="">
-                    <div class="position-absolute d-flex bg-white rounded-pill img-top justify-content-center align-items-center p-2 gap-2 ">
-                        <i class="fa-solid fa-star"></i> 
-                        <span>${product.span1}</span>
-                    </div>
-                    <div class="position-absolute d-flex bg-white rounded-3 img-bottom justify-content-between text-center w-75 mx-auto  p-2 gap-1">
-                      <div class=" d-flex flex-column text-center align-items-center">
-                          <i class="fa-solid fs-4 fa-clock" style="color: rgb(255, 105, 0);"></i>
-                        <small>Prep Time</small>
-                        <span class="fw-bold">${product.span2}</span>
-                      </div>
-                      <div class=" d-flex flex-column text-center align-items-center">
-                          <i class="fa-solid fs-4 fa-fire-burner" style="color: rgb(251, 44, 54);"></i>
-                        <small>Cook Time</small>
-                        <span class="fw-bold">${product.span3}</span>
-                      </div>
-                      <div class=" d-flex flex-column text-center align-items-center">
-                         <i class="fa-solid fs-4 fa-users" style="color: rgb(43, 127, 255);"></i>
-                        <small>Servings</small>
-                        <span class="fw-bold">${product.span4}</span>
-                      </div>
-                    </div>
-                </div>
-            </div>
-          
-            <div class="col-lg-7 bg-white header-right overflow-auto">
-                <div class="  p-3 d-flex flex-column gap-3">
-                    <div class=" d-flex flex-row gap-3">
-                    <span class="sp1 rounded-pill">${product.span5}</span>
-                    <span class="sp2 rounded-pill">${product.span6}</span>
-                    </div>
-                   <div class="d-flex justify-content-between">
-                    <div class="">
-                        <h1>${product.h1}</h1>
-                    <p>${product.p1}</p>
-                    </div>
-                    <div class="icon1 flex-row d-flex gap-3">
-                        <span><i class="fa-solid fa-bookmark d-flex justify-content-center"></i></span>
-                        <span><i class="fa-solid fa-share-nodes d-flex justify-content-center"></i></span>
-                        
-                    </div>
-                   </div>
-                   </div>
-    <div class="border-bottom border-1"> 
-  <ul class="nav nav-underline justify-content-around " id="myTab" role="tablist">
-      <li class="nav-item  " role="presentation">
-        <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true"><span><i class="fa-solid fa-list-check"></i></span> Ingredients </button>
-      </li>
-      <li class="nav-item  " role="presentation">
-        <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false"><span><i class="fa-solid fa-book-open"></i></span> Instructions</button>
-      </li>
-      <li class="nav-item mt-2" role="presentation">
-        <button class="nav-link m-auto" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false"><span><i class="fa-solid fa-chart-pie"></i></span> Nutrition </button>
-      </li>
-      <li class="nav-item " role="presentation">
-        <button class="nav-link" id="nav-Chef-tab" data-bs-toggle="tab" data-bs-target="#nav-Chef" type="button" role="tab" aria-controls="nav-Chef" aria-selected="false"><span><i class="fa-solid fa-lightbulb"></i></span> Chef's Tips </button>
-      </li>
-    
-</ul>
-<div class="tab-content " id="myTabContent">
-  <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home" tabindex="0">
-    <div class=" p-5 Ingredients mt-5">
-      <p><span>1</span> ${product.p2}</p>
-      <p><span>2</span>  ${product.p3}</p>
-      <p><span>3</span>  ${product.p4}</p>
-      <p><span>4</span> ${product.p5}s</p>
-      <p><span>5</span>  ${product.p6}</p>
-      <p><span>6</span>  ${product.p7}</p>
-      <p><span>7</span> ${product.p8}</p>
-      <p><span>8</span>  ${product.p9}</p>
-    </div>
-  </div>
-  <div class="tab-pane fade  " id="nav-profile" role="tabpanel" aria-labelledby="nav-profile" tabindex="1">
-   <div class="p-5 d-flex flex-column gap-3">
-     <div class="d-flex gap-2">
-      <span >1</span>
-      <p>Bring a large pot of salted water to boil. Cook spaghetti according to package directions until al dente.</p>
-    </div>
-    <div class="d-flex gap-2">
-      <span>2</span>
-      <p>While pasta cooks, heat a large skillet over medium heat. Add diced pancetta and cook until crispy, about 5-7 minutes.</p>
-    </div>
-    <div class="d-flex gap-2">
-      <span>3</span>
-      <p>In a bowl, whisk together eggs, grated Pecorino Romano, and Parmesan cheese. Add plenty of freshly ground black pepper.</p>
-    </div>
-    <div class="d-flex gap-2">
-      <span>4</span>
-      <p>Reserve 1 cup of pasta cooking water before draining. Drain pasta and immediately add to the skillet with pancetta.</p>
-    </div>
-    <div class="d-flex gap-2">
-      <span>5</span>
-      <p>Remove skillet from heat. Quickly pour in egg mixture while tossing pasta vigorously. Add reserved pasta water as needed to create a creamy sauce.</p>
-    </div>
-    <div class="d-flex gap-2">
-      <span>6</span>
-      <p>Remove skillet from heat. Quickly pour in egg mixture while tossing pasta vigorously. Add reserved pasta water as needed to create a creamy sauce.</p>
-    </div>
-   </div>
-  </div>
-  <div class="tab-pane fade " id="nav-contact" role="tabpanel" aria-labelledby="nav-contact" tabindex="2">
-    <div class="container ">
-      <div class="row p-4 g-3 my-auto">
-        <div class="col-lg-6">
-          <div class=" d-flex justify-content-between flex-row p-3">
-            <div class="d-flex gap-2">
-             <span> <i class="fa-solid fa-fire d-flex justify-content-center flex-row"></i></span>
-              <span class="my-auto">Calories</span>
-            </div>
-            <p class="fw-bold text-black">450 kcal</p>
-          </div>
-        </div>
-        <div class="col-lg-6">
-          <div class="d-flex justify-content-between p-3">
-           <div class="d-flex gap-2">
-           <span><i class="fa-solid fa-dumbbell d-flex justify-content-center flex-row"></i></span>
-            <span class="my-auto">Protein</span>
-           </div>
-            <p class="fw-bold text-black">38g</p>
-          </div>
-        </div>
-        <div class="col-lg-6">
-          <div class="d-flex justify-content-between p-3">
-            <div class="d-flex gap-2">
-              <span><i class="fa-solid fa-wheat-awn d-flex justify-content-center flex-row"></i></span>
-              <span class="my-auto">Carbohydrates</span>
-            </div>
-            <p class="fw-bold text-black">24g</p>
-          </div>
-        </div>
-        <div class="col-lg-6">
-          <div class="d-flex justify-content-between p-3">
-            <div class="d-flex gap-2">
-              <span><i class="fa-solid fa-droplet d-flex justify-content-center flex-row"></i></span>
-               <span class="my-auto">Fat</span>
-            </div>
-            <p class="fw-bold text-black">22g</p>
-          </div>
-        </div>
-        <div class="col-lg-6">
-          <div class="d-flex justify-content-between p-3">
-            <div class="d-flex gap-2">
-              <span><i class="fa-solid fa-seedling d-flex justify-content-center flex-row"></i></span>
-              <span class="my-auto">Fiber</span>
-            </div>
-            <p class="fw-bold text-black">4g</p>
-          </div>
-        </div>
-        <div class="col-lg-6">
-          <div class="d-flex justify-content-between p-3">
-            <div class="d-flex gap-2">
-              <span><i class="fa-solid fa-cube d-flex justify-content-center flex-row"></i></span>
-              <span class="my-auto">Sodium</span>
-            </div>
-            <p class="fw-bold text-black">760mg</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="tab-pane fade" id="nav-Chef" role="tabpanel" aria-labelledby="nav-Chef" tabindex="3">
-     <div class="p-5 d-flex flex-column gap-3">
-      <div class="Chef d-flex">
-      <span><i class="fa-solid fa-circle-check" style="color: rgb(225, 113, 0);"></i></span>
-      <p>Add vegetables in order of cooking time needed</p>
-     </div>
-     <div class="Chef d-flex py-auto">
-      <span><i class="fa-solid fa-circle-check" style="color: rgb(225, 113, 0);"></i></span>
-      <p>Adjust curry powder amount to taste</p>
-     </div>
-     <div class="Chef d-flex">
-      <span><i class="fa-solid fa-circle-check" style="color: rgb(225, 113, 0);"></i></span>
-      <p>Use full-fat coconut milk for creamier curry</p>
-     </div>
-     <div class="Chef d-flex">
-      <span><i class="fa-solid fa-circle-check" style="color: rgb(225, 113, 0);"></i></span>
-      <p>Add protein like tofu or paneer if desired</p>
-     </div>
-     </div>
-     </div>
-</div>
-</div>
-            </div>
-        </div>
-    </div> ` ;
-  }
-  document.getElementById("nextBtn").addEventListener("click", function () {
-  currentIndex++;
+var STORAGE_KEY = "contacthub_contacts";
 
-  if (currentIndex >= products.length) {
-      currentIndex = 0;
+var GROUP_COLORS = {
+  family:  { bg: "#ecfdf5", text: "#059669" },
+  friends: { bg: "#eff6ff", text: "#2563eb" },
+  work:    { bg: "#f5f3ff", text: "#7c3aed" },
+  school:  { bg: "#fff7ed", text: "#ea580c" },
+  other:   { bg: "#f1f5f9", text: "#475569" }
+};
+
+var RULES = {
+  name:  { required: true,  test: function(v) { return /^[A-Za-z\u0600-\u06FF\s]{2,50}$/.test(v.trim()); } },
+  phone: { required: true,  test: function(v) { return /^(01)[0125][0-9]{8}$/.test(v.trim()); } },
+  email: { required: false, test: function(v) { return !v || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()); } }
+};
+
+var contacts   = loadContacts();
+var editingId  = null;
+var avatarDataUrl = "";
+
+var modalEl = document.getElementById("contactModal");
+var bsModal = new bootstrap.Modal(modalEl);
+
+function loadContacts() {
+  try {
+    return JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+  } catch (e) {
+    return [];
   }
-tryAgain();
+}
+
+function saveContacts() {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(contacts));
+}
+
+function getField(id) {
+  return document.getElementById(id);
+}
+
+function capitalize(str) {
+  return str[0].toUpperCase() + str.slice(1);
+}
+
+function initials(name) {
+  return name.trim().split(/\s+/).slice(0, 2).map(function(w) { return w[0]; }).join("").toUpperCase();
+}
+
+function escapeHtml(str) {
+  var div = document.createElement("div");
+  div.textContent = str || "";
+  return div.innerHTML;
+}
+
+function avatarHtml(c) {
+  if (c.avatar) {
+    return '<img src="' + c.avatar + '" alt="' + escapeHtml(c.name) + '">';
+  }
+  return escapeHtml(initials(c.name));
+}
+
+function render() {
+  getField("statTotal").textContent     = contacts.length;
+  getField("statFavorites").textContent = contacts.filter(function(c) { return c.favorite; }).length;
+  getField("statEmergency").textContent = contacts.filter(function(c) { return c.emergency; }).length;
+
+  renderGrid();
+  renderSideList("favoritesList",  contacts.filter(function(c) { return c.favorite; }),  "No favorites yet",               "fa-star");
+  renderSideList("emergencyList",  contacts.filter(function(c) { return c.emergency; }), "No emergency contacts yet",      "fa-heart-pulse");
+}
+
+function renderGrid() {
+  var grid = getField("contactsGrid");
+  var term = getField("searchInput").value.trim().toLowerCase();
+
+  var filtered = contacts;
+  if (term) {
+    filtered = contacts.filter(function(c) {
+      return c.name.toLowerCase().includes(term) ||
+             c.phone.toLowerCase().includes(term) ||
+             (c.email || "").toLowerCase().includes(term);
+    });
+  }
+
+  if (filtered.length === 0) {
+    var msg = contacts.length === 0
+      ? 'No contacts yet. Click "Add Contact" to get started.'
+      : "No contacts match your search.";
+    grid.innerHTML = '<div class="col-12"><div class="empty-state contact-card py-5"><i class="fa-solid fa-address-book fa-2x mb-2 d-block"></i>' + msg + '</div></div>';
+    return;
+  }
+
+  grid.innerHTML = filtered.map(buildCardHtml).join("");
+}
+
+function buildCardHtml(c) {
+  var gc = GROUP_COLORS[c.group];
+  var groupBadge = gc ? '<span class="badge-group mt-1 d-inline-block" style="background:' + gc.bg + ';color:' + gc.text + ';">' + escapeHtml(c.group) + '</span>' : "";
+  var emailRow   = c.email   ? '<p class="small text-muted mb-1 text-truncate"><i class="fa-solid fa-envelope fa-xs me-1"></i>' + escapeHtml(c.email)   + '</p>' : "";
+  var addressRow = c.address ? '<p class="small text-muted mb-1 text-truncate"><i class="fa-solid fa-location-dot fa-xs me-1"></i>' + escapeHtml(c.address) + '</p>' : "";
+  var notesRow   = c.notes   ? '<p class="small text-muted mt-2 mb-0 fst-italic">' + escapeHtml(c.notes) + '</p>' : "";
+
+  return '<div class="col-sm-6">' +
+    '<div class="contact-card p-3 h-100">' +
+      '<div class="d-flex gap-3">' +
+        '<div class="contact-avatar">' + avatarHtml(c) + '</div>' +
+        '<div class="flex-grow-1 min-w-0">' +
+          '<div class="d-flex justify-content-between align-items-start">' +
+            '<h3 class="h6 fw-bold mb-1 text-truncate">' + escapeHtml(c.name) + '</h3>' +
+            '<div class="d-flex gap-1 flex-shrink-0">' +
+              '<button class="icon-btn ' + (c.favorite  ? "active-fav" : "") + '" title="Toggle favorite"  onclick="toggleFavorite(\'' + c.id + '\')">' +
+                '<i class="fa-solid fa-star small"></i></button>' +
+              '<button class="icon-btn ' + (c.emergency ? "active-emg" : "") + '" title="Toggle emergency" onclick="toggleEmergency(\'' + c.id + '\')">' +
+                '<i class="fa-solid fa-heart-pulse small"></i></button>' +
+            '</div>' +
+          '</div>' +
+          '<p class="small text-muted mb-1"><i class="fa-solid fa-phone fa-xs me-1"></i>' + escapeHtml(c.phone) + '</p>' +
+          emailRow + addressRow + groupBadge + notesRow +
+          '<div class="d-flex gap-2 mt-3">' +
+            '<button class="btn btn-sm btn-light rounded-3 flex-fill" onclick="openEditModal(\'' + c.id + '\')">' +
+              '<i class="fa-solid fa-pen small me-1"></i>Edit</button>' +
+            '<button class="btn btn-sm btn-outline-danger rounded-3 flex-fill" onclick="deleteContact(\'' + c.id + '\')">' +
+              '<i class="fa-solid fa-trash small me-1"></i>Delete</button>' +
+          '</div>' +
+        '</div>' +
+      '</div>' +
+    '</div>' +
+  '</div>';
+}
+
+function renderSideList(containerId, list, emptyMsg, icon) {
+  var el = getField(containerId);
+
+  if (list.length === 0) {
+    el.innerHTML = '<div class="empty-state"><i class="fa-solid ' + icon + ' fa-lg mb-2 d-block"></i>' + emptyMsg + '</div>';
+    return;
+  }
+
+  el.innerHTML = list.map(function(c) {
+    return '<div class="mini-contact">' +
+      '<div class="mini-avatar">' + avatarHtml(c) + '</div>' +
+      '<div class="flex-grow-1 min-w-0">' +
+        '<p class="small fw-semibold mb-0 text-truncate">' + escapeHtml(c.name) + '</p>' +
+        '<p class="text-muted mb-0 text-truncate side-sub">' + escapeHtml(c.phone) + '</p>' +
+      '</div>' +
+    '</div>';
+  }).join("");
+}
+
+function clearErrors() {
+  for (var name in RULES) {
+    getField("contact" + capitalize(name) + "Error").classList.add("d-none");
+    getField("contact" + capitalize(name)).classList.remove("is-invalid");
+  }
+}
+
+function openAddModal() {
+  editingId     = null;
+  avatarDataUrl = "";
+  getField("modalTitle").textContent         = "Add New Contact";
+  getField("contactForm").reset();
+  getField("contactId").value                = "";
+  getField("avatarPreview").innerHTML        = '<i class="fa-solid fa-user"></i>';
+  clearErrors();
+  bsModal.show();
+}
+
+function openEditModal(id) {
+  var c = contacts.find(function(x) { return x.id === id; });
+  if (!c) return;
+
+  editingId     = id;
+  avatarDataUrl = c.avatar || "";
+
+  getField("modalTitle").textContent         = "Edit Contact";
+  getField("contactId").value                = c.id;
+  getField("contactName").value              = c.name;
+  getField("contactPhone").value             = c.phone;
+  getField("contactEmail").value             = c.email    || "";
+  getField("contactAddress").value           = c.address  || "";
+  getField("contactGroup").value             = c.group    || "";
+  getField("contactNotes").value             = c.notes    || "";
+  getField("contactFavorite").checked        = !!c.favorite;
+  getField("contactEmergency").checked       = !!c.emergency;
+  getField("avatarPreview").innerHTML        = avatarHtml(c);
+
+  clearErrors();
+  bsModal.show();
+}
+
+function handleAvatarChange(e) {
+  var file = e.target.files[0];
+  if (!file) return;
+
+  var reader = new FileReader();
+  reader.onload = function(ev) {
+    avatarDataUrl = ev.target.result;
+    getField("avatarPreview").innerHTML = '<img src="' + avatarDataUrl + '" alt="avatar">';
+  };
+  reader.readAsDataURL(file);
+}
+
+function handleSubmit(e) {
+  e.preventDefault();
+  clearErrors();
+
+  var values = {};
+  var valid  = true;
+
+  for (var name in RULES) {
+    var input = getField("contact" + capitalize(name));
+    values[name] = input.value.trim();
+    if (!RULES[name].test(values[name])) {
+      getField("contact" + capitalize(name) + "Error").classList.remove("d-none");
+      input.classList.add("is-invalid");
+      valid = false;
+    }
+  }
+
+  if (!valid) return;
+
+  var data = {
+    name:      values.name,
+    phone:     values.phone,
+    email:     values.email,
+    address:   getField("contactAddress").value.trim(),
+    group:     getField("contactGroup").value,
+    notes:     getField("contactNotes").value.trim(),
+    favorite:  getField("contactFavorite").checked,
+    emergency: getField("contactEmergency").checked,
+    avatar:    avatarDataUrl
+  };
+
+  if (editingId) {
+    var idx = contacts.findIndex(function(c) { return c.id === editingId; });
+    contacts[idx] = Object.assign({}, contacts[idx], data);
+  } else {
+    data.id = "c_" + Date.now() + "_" + Math.random().toString(36).slice(2, 7);
+    contacts.push(data);
+  }
+
+  saveContacts();
+  render();
+  bsModal.hide();
+
+  if (window.Swal) {
+    Swal.fire({
+      icon: "success",
+      title: editingId ? "Contact updated" : "Contact added",
+      timer: 1400,
+      showConfirmButton: false
+    });
+  }
+}
+
+function deleteContact(id) {
+  var c = contacts.find(function(x) { return x.id === id; });
+  if (!c) return;
+
+  function doDelete() {
+    contacts = contacts.filter(function(x) { return x.id !== id; });
+    saveContacts();
+    render();
+  }
+
+  if (window.Swal) {
+    Swal.fire({
+      title: "Delete " + c.name + "?",
+      text: "This action cannot be undone.",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Delete",
+      confirmButtonColor: "#dc2626",
+      cancelButtonText: "Cancel"
+    }).then(function(result) {
+      if (result.isConfirmed) doDelete();
+    });
+  } else if (confirm("Delete " + c.name + "?")) {
+    doDelete();
+  }
+}
+
+function toggleFavorite(id) {
+  var c = contacts.find(function(x) { return x.id === id; });
+  if (!c) return;
+  c.favorite = !c.favorite;
+  saveContacts();
+  render();
+}
+
+function toggleEmergency(id) {
+  var c = contacts.find(function(x) { return x.id === id; });
+  if (!c) return;
+  c.emergency = !c.emergency;
+  saveContacts();
+  render();
+}
+
+getField("addContactBtn").addEventListener("click", openAddModal);
+getField("contactForm").addEventListener("submit", handleSubmit);
+getField("avatarInput").addEventListener("change", handleAvatarChange);
+getField("searchInput").addEventListener("input", renderGrid);
+
+modalEl.addEventListener("hidden.bs.modal", function() {
+  getField("contactForm").reset();
+  clearErrors();
+  editingId     = null;
+  avatarDataUrl = "";
 });
 
-tryAgain()
+render();
